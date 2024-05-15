@@ -1,0 +1,123 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+
+.display {
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.number-pad,
+.operator-pad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 45%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.number-pad button {
+  background-color: #f5f5f5;
+}
+
+.operator-pad button {
+  background-color: #ddd;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+button:active {
+  background-color: #3213e0;
+}
+
+.number-pad button {
+  /* Use a color palette or generate your own colors */
+  color: #333;
+
+  /* Default color */
+  &:nth-child(3n + 1) {
+    background-color: #ec2424;
+    /* Light pink for the first in a row (3n+1) */
+    color: #000;
+    /* Black text for better contrast */
+  }
+
+  &:nth-child(3n + 2) {
+    background-color: #14eeee;
+    /* Light blue for the second in a row (3n+2) */
+    color: #000;
+    /* Black text for better contrast */
+  }
+
+  &:nth-child(3n) {
+    background-color: #d4d115;
+    /* Light yellow for the third in a row (3n) */
+    color: #000;
+    /* Black text for better contrast */
+  }
+}
