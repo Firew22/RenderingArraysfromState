@@ -7,13 +7,20 @@ function Popular() {
   const [popular, setPopular] = useState([]);
 
   const getPopular = async () => {
-    try {
-      const apiKey = import.meta.env.VITE_API_KEY; 
-      const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`);
-      const data = await api.json();
-      setPopular(data.recipes);
-    } catch (error) {
-      console.error("Error fetching the data:", error);
+    const cachedData = localStorage.getItem('popularRecipes');
+
+    if (cachedData) {
+      setPopular(JSON.parse(cachedData));
+    } else {
+      try {
+        const apiKey = import.meta.env.VITE_API_KEY;
+        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=8`);
+        const data = await api.json();
+        setPopular(data.recipes);
+        localStorage.setItem('popularRecipes', JSON.stringify(data.recipes));
+      } catch (error) {
+        console.error("Error fetching the data:", error);
+      }
     }
   };
 
@@ -27,6 +34,17 @@ function Popular() {
       <Splide 
         options={{
           perPage: 4,
+          breakpoints: {
+            1200: {
+              perPage: 3,
+            },
+            768: {
+              perPage: 2,
+            },
+            576: {
+              perPage: 1,
+            },
+          },
           arrows: false,
           pagination: false,
           drag: 'free',
@@ -53,22 +71,23 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-  min-height: 15rem; /* Adjusted for better display */
+  min-height: 15rem;
   border-radius: 2rem;
   overflow: hidden;
   text-align: center;
-  position: relative; /* Make the card relative */
+  position: relative;
 `;
 
 const ImageWrapper = styled.div`
-  position: relative; /* Container to position text over image */
+  position: relative;
   img {
     border-radius: 2rem;
-    width: 100%; /* Ensures the image takes full width of the card */
-    height: auto; /* Maintains aspect ratio */
+    width: 100%;
+    height: auto;
+    display: block;
   }
   h2 {
-    position: absolute; /* Position the text over the image */
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -76,8 +95,8 @@ const ImageWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white; /* Text color */
-    background: rgba(0, 0, 0, 0.5); /* Background color with transparency */
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
     margin: 0;
     padding: 1rem;
     font-size: 1rem;
