@@ -5,11 +5,13 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>Home
+    <div>
         <Veggie />
         <Popular />
     </div>
   )
 }
+
+
 
 export default Home

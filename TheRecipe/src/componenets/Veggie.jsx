@@ -45,7 +45,7 @@ function Popular() {
               perPage: 1,
             },
           },
-          arrows: true,
+          arrows: false,
           pagination: false,
           drag: 'free',
           gap: '2rem',
@@ -79,12 +79,14 @@ const Card = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  position: relative;
+  position: absolute;
   img {
     border-radius: 2rem;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    left: 0;
+    
   }
   h2 {
     position: absolute;
