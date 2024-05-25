@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 function Searched() {
@@ -30,10 +31,11 @@ getSearched(params.search)
     {searchedRecipes.map((item) =>{
         return (
           <Card key={item.id}>
-            <a href={`/recipe/${item.id}`}>
+
+            <Link to={'/recipe/'+ item.id}>
               <img src={item.image} alt={item.title} />
               <h4>{item.title}</h4>
-            </a>
+            </Link>
           </Card>
         )
     })}

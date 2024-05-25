@@ -1,55 +1,63 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import{Navigate, useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'; // Import useNavigate correctly
 
 function Search() {
+  const [input, setInput] = useState('');
+  const navigate = useNavigate();
 
-const[input, setInput] = useState("")
-const navigate = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate('/searched/' + input); // Correct the URL path (add a slash and use the input value)
+  };
 
-const submitHandler = (e) =>{
-    e.preventDefault()
-    navigate('/searched/'+input)
-}
   return (
     <FormStyle onSubmit={submitHandler}>
       <div>
-        
-        <input onChange={(e) => setInput(e.target.value)}  type="text" placeholder="Search..." aria-label="Search" 
-        value={input} />
-        
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+          placeholder="Search..."
+          aria-label="Search"
+          value={input}
+        />
+        <FaSearch /> {/* Add the search icon */}
       </div>
     </FormStyle>
   );
 }
 
 const FormStyle = styled.form`
- margin: 0rem 20rem;
-div{
-    width: 100%;
-    position: relative;
-}
+  margin: 0 auto; /* Center the form horizontally */
+  max-width: 400px; /* Limit the width for responsiveness */
 
-input{
-    border: none;
-    background: linear-gradient(35deg, #494949, #313131);
-    font-size: 1.5em;
-    color: white;
+  div {
+    position: relative;
+  }
+
+  input {
+    width: 100%;
     padding: 1rem 3rem;
+    font-size: 1.5em;
     border: none;
     border-radius: 1rem;
     outline: none;
-    width: 100%;
-svg{
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translate(100%, -50%);
+    background: linear-gradient(35deg, #494949, #313131);
     color: white;
 
-}
-}
-`
+    &::placeholder {
+      color: #ccc; /* Placeholder text color */
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: white;
+  }
+`;
 
 export default Search;
