@@ -30,7 +30,7 @@ font-size: 1.rem;
 font-weight: 400;
 font-family: 'Lobster two', cursive;
 text-decoration: none;
-color: white;
+color: black;
 `
 const Nav = styled.div`
 padding: 4rem 0rem;

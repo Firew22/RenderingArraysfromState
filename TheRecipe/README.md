@@ -34,4 +34,4 @@ Delicious Recipes is a web application that allows users to search and browse a 
 
 ### Installation
 
-1. Clone the repository:
+1. Here is the link have a fun cooking :[text](https://chefthing.onrender.com/)
